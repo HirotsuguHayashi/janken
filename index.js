@@ -28,7 +28,7 @@ const decideTheGame = (myHand, enemyHand) => {
     if(result === 0) {
         return DRAW
     }
-    
+
     if(result === 1) {
         return LOSE
     }
@@ -59,31 +59,26 @@ const createElements = (result, index) => {
     const trElement = document.createElement('tr')
     const timesTdElement = document.createElement('td')
     const myHandTdElement = document.createElement('td')
-    const enermyHandTdElement = document.createElement('td')
+    const enemyHandTdElement = document.createElement('td')
     const winOrLoseTdElement = document.createElement('td')
 
     timesTdElement.innerHTML = index
     myHandTdElement.innerHTML = result.myHand.name
-    enermyHandTdElement.innerHTML = result.enemyHand.name
+    enemyHandTdElement.innerHTML = result.enemyHand.name
     winOrLoseTdElement.innerHTML = result.winOrLose
 
     trElement.appendChild(timesTdElement)
     trElement.appendChild(myHandTdElement)
-    trElement.appendChild(enermyHandTdElement)
+    trElement.appendChild(enemyHandTdElement)
     trElement.appendChild(winOrLoseTdElement)
 
     resultsElement.appendChild(trElement)
 }
 
-// 各DOM要素に紐づいたイベントリスナー(ここまとめられそうな気がする)
-rockElement.addEventListener('click', (event) => {
-    doRockScissorsPaper(event)
-})
-
-scissorsElement.addEventListener('click', (event) => {
-    doRockScissorsPaper(event)
-})
-
-paperElement.addEventListener('click', (event) => {
-    doRockScissorsPaper(event)
+// // 各DOM要素に紐づいたイベントリスナー(ここまとめられそうな気がする)
+const handElementsList = [rockElement, scissorsElement, paperElement]
+handElementsList.forEach((hand) => {
+    hand.addEventListener('click', (event) => {
+        doRockScissorsPaper(event)
+    })
 })
